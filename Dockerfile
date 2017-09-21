@@ -23,8 +23,8 @@ chown -R oracle:dba /opt/app-root
 
 ENV PATH="${PATH}:/usr/libexec/s2i"
 
-# TODO (optional): Copy the builder files into /opt/app-root
-# COPY ./<builder_folder>/ /opt/app-root/
+#Copy the modified runOracle script to the proper folder
+COPY ./runOracle.sh /opt/oracle/
 
 # TODO: Copy the S2I scripts to /usr/libexec/s2i, since openshift/base-centos7 image
 # sets io.openshift.s2i.scripts-url label that way, or update that label
