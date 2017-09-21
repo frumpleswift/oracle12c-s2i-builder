@@ -8,5 +8,7 @@ Sample invocation:
 s2i build <source code path/URL> oracle12c-s2i-builder <application image>
 
 You can then run the resulting image via:
+The image is based on this project: https://github.com/oracle/docker-images/tree/master/OracleDatabase
+
 docker run <application image>
 EOF

@@ -9,16 +9,19 @@ MAINTAINER Jonathan Hill <anfechtung@gmail.com>
 
 # TODO: Set labels used in OpenShift to describe the builder image
 LABEL io.k8s.description="Platform for building an oracle 12c pluggable database and deploy git code" \
-      io.k8s.display-name="builder oracle 12c" 
+      io.k8s.display-name="builder oracle 12c"  \
 #      io.openshift.expose-services="8080:http" \
 #      io.openshift.tags="builder,x.y.z,etc."
+       io.openshift.s2i.scripts-url="image:///usr/libexec/s2i" 
 
 #Mimic s2i folder structure for OEL Oracle image
 USER root
 
 RUN mkdir -p /opt/app-root && \
 mkdir /usr/libexec/s2i && \
-chown -R oracle:dba /opt/app-root   
+chown -R oracle:dba /opt/app-root 
+
+ENV PATH="${PATH}:/usr/libexec/s2i"
 
 # TODO (optional): Copy the builder files into /opt/app-root
 # COPY ./<builder_folder>/ /opt/app-root/
